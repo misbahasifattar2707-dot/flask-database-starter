@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teachers</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f0f4f8; }
+        h1 { color: #2c3e50; }
+
+        nav { margin-bottom: 20px; }
+        nav a { margin-right: 12px; color: #3498db; text-decoration: none; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+
+        .teacher-card {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .teacher-card h3 {
+            margin: 0 0 8px 0;
+            color: #9b59b6;
+        }
+
+        .teacher-card p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .course-badge {
+            background: #27ae60;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            display: inline-block;
+            margin: 2px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .empty { color: #888; font-style: italic; }
+    </style>
+</head>
+<body>
+    <h1>Teachers</h1>
+
+    <nav>
+        <a href="{{ url_for('index') }}">Students</a>
+        <a href="{{ url_for('courses') }}">Courses</a>
+        <a href="{{ url_for('teachers') }}">Teachers</a>
+    </nav>
+
+    <a href="{{ url_for('add_teacher') }}" class="btn">+ Add New Teacher</a>
+
+    {% if teachers %}
+        {% for teacher in teachers %}
+        <div class="teacher-card">
+            <h3>{{ teacher.name }}</h3>
+            <p><strong>Email:</strong> {{ teacher.email }}</p>
+
+            <p><strong>Courses Taught:</strong></p>
+            {% if teacher.courses %}
+                {% for course in teacher.courses %}
+                    <span class="course-badge">{{ course.name }}</span>
+                {% endfor %}
+            {% else %}
+                <p class="empty">No courses assigned</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="empty">No teachers yet.</p>
+    {% endif %}
+</body>
+</html>
