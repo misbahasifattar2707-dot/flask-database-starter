@@ -1,0 +1,145 @@
+/* ------------------ GLOBAL RESET ------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ------------------ BODY ------------------ */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 40px;
+    color: #333;
+}
+
+/* ------------------ HEADINGS ------------------ */
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+    font-size: 2.5rem;
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: #444;
+}
+
+/* ------------------ FORMS & TABLES ------------------ */
+form, table {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
+}
+
+/* ------------------ INPUTS ------------------ */
+input {
+    padding: 10px 14px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+/* ------------------ BUTTONS ------------------ */
+button {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* Delete buttons inside table */
+table button {
+    background: linear-gradient(135deg, #ff5f6d, #ffc371);
+}
+
+table button:hover {
+    box-shadow: 0 10px 25px rgba(255, 95, 109, 0.5);
+}
+
+/* ------------------ SEARCH BAR / FLEX FORM ------------------ */
+/* Only apply flex layout if form has class "flex-form" */
+form.flex-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+}
+
+/* ------------------ TABLE ------------------ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 14px;
+    text-align: left;
+}
+
+th {
+    background: #f3f4f6;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+tr {
+    transition: 0.2s ease;
+}
+
+tr:hover {
+    background: rgba(102, 126, 234, 0.08);
+}
+
+/* ------------------ HR ------------------ */
+hr {
+    border: none;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 40px 0;
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    form, table {
+        padding: 15px;
+    }
+
+    input {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}

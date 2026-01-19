@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library REST API</title>
+    <link rel="stylesheet" href="/static/css/theme.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>📚 Author and book Api management</h1>
+
+    <div class="card">
+        <h2>Add Author</h2>
+        <input id="authorName" placeholder="Author Name">
+        <input id="authorCountry" placeholder="Country">
+        <button onclick="createAuthor()">Add Author</button>
+    </div>
+
+    <div class="card">
+        <h2>Add Book</h2>
+        <input id="bookTitle" placeholder="Book Title">
+        <input id="bookYear" placeholder="Year">
+        <input id="bookAuthorId" placeholder="Author ID">
+        <button onclick="createBook()">Add Book</button>
+    </div>
+
+    <div class="card">
+        <h2>Database Output</h2>
+        <pre id="output"></pre>
+    </div>
+</div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>

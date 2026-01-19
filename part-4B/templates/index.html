@@ -1,0 +1,209 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Book and Author Api</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>📚 Book and Author Api</h1>
+
+# SEARCH 
+<form method="GET">
+    <input type="text" name="search" placeholder="Search by author name">
+    <button type="submit">Search</button>
+</form>
+
+<hr>
+
+# ADD AUTHOR 
+
+<h2>Add Author</h2>
+<form id="authorForm">
+    <input name="name" placeholder="Author Name" required>
+    <input name="country" placeholder="Country">
+    <button type="submit">Add Author</button>
+</form>
+
+<table>
+<tr>
+    <th>Name</th>
+    <th>Country</th>
+    <th>Action</th>
+</tr>
+{% for a in authors %}
+<tr>
+    <td>{{ a.name }}</td>
+    <td>{{ a.country }}</td>
+    <td>
+        <button type="button" onclick="deleteAuthor({{ a.id }})">❌ Delete</button>
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+<hr>
+
+#<!-ADD BOOK
+<h2>Add Book</h2>
+<form id="bookForm">
+    <input name="title" placeholder="Book Title" required>
+    <input name="year" placeholder="Year">
+    <input name="author" placeholder="Author Name" required>
+    <button type="submit">Add Book</button>
+</form>
+
+<table>
+<tr>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Author</th>
+    <th>Action</th>
+</tr>
+{% for b in books %}
+<tr>
+    <td>{{ b.title }}</td>
+    <td>{{ b.year }}</td>
+    <td>{{ b.author.name if b.author else "No Author" }}</td>
+    <td>
+        <button type="button" onclick="deleteBook({{ b.id }})">❌ Delete</button>
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html> 
+ -->
+
+
+ <!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>books and Author api</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<script>
+async function addBook(event) {
+    event.preventDefault();
+    const form = event.target;
+    const data = new FormData(form);
+    const res = await fetch('/book/add', { method: 'POST', body: data });
+    if (res.ok) location.reload();
+}
+
+async function addAuthor(event) {
+    event.preventDefault();
+    const form = event.target;
+    const data = new FormData(form);
+    const res = await fetch('/author/add', { method: 'POST', body: data });
+    if (res.ok) location.reload();
+}
+
+async function deleteBook(id) {
+    if(!confirm("Delete this book?")) return;
+    const res = await fetch(`/book/delete/${id}`, { method: 'DELETE' });
+    if (res.ok) location.reload();
+}
+
+async function deleteAuthor(id) {
+    if(!confirm("Delete this author?")) return;
+    const res = await fetch(`/author/delete/${id}`, { method: 'DELETE' });
+    if (res.ok) location.reload();
+}
+</script>
+</head>
+<body>
+<h1>Books and Authors Api with js</h1>
+
+<!--Search--> 
+<form method="GET" action="/">
+    <input type="text" name="search" placeholder="Search by book or author" value="{{ search }}">
+    <button type="submit">Search</button>
+</form>
+
+<hr>
+
+<!--Add Author--> 
+<h2>Add Author</h2>
+<form onsubmit="addAuthor(event)">
+    <input type="text" name="name" placeholder="Author Name" required>
+    <input type="text" name="country" placeholder="Country">
+    <button type="submit">Add Author</button>
+</form>
+
+<!--Add Book--> 
+<h2>Add Book</h2>
+<form onsubmit="addBook(event)">
+    <input type="text" name="title" placeholder="Book Title" required>
+    <input type="number" name="year" placeholder="Year">
+    <input type="text" name="author" placeholder="Author Name" required>
+    <button type="submit">Add Book</button>
+</form>
+
+<hr>
+
+<!--Authors Table--> 
+<h2>Authors</h2>
+{% if authors %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Books</th>
+        <th>Action</th>
+    </tr>
+    {% for author in authors %}
+    <tr>
+        <td>{{ author.id }}</td>
+        <td>{{ author.name }}</td>
+        <td>{{ author.country }}</td>
+        <td>
+            {% for book in author.books %}
+                {{ book.title }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </td>
+        <td><button onclick="deleteAuthor({{ author.id }})">Delete</button></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p style="color:white; text-align:center;">No authors found.</p>
+{% endif %}
+
+<hr>
+
+<!--Books Table--> 
+<h2>Books</h2>
+{% if books %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Author</th>
+        <th>Created At</th>
+        <th>Action</th>
+    </tr>
+    {% for book in books %}
+    <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.year }}</td>
+        <td>{{ book.author.name if book.author else '' }}</td>
+        <td>{{ book.created_at.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+        <td><button onclick="deleteBook({{ book.id }})">Delete</button></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p style="color:white; text-align:center;">No books found.</p>
+{% endif %}
+
+</body>
+</html> 
+ 

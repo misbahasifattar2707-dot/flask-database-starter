@@ -1,0 +1,41 @@
+body {
+    background: #0f172a;
+    color: #e5e7eb;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+    width: 600px;
+    margin: 40px auto;
+}
+
+h1 {
+    text-align: center;
+    color: #38bdf8;
+}
+
+.card {
+    background: #020617;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #020617;
+    color: white;
+    border: 1px solid #334155;
+}
+
+button {
+    margin-top: 12px;
+    padding: 10px;
+    width: 100%;
+    background: #38bdf8;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
