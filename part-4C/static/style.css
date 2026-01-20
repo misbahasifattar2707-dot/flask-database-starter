@@ -1,0 +1,77 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: #fff;
+    padding: 30px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.dashboard {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    padding: 25px;
+    border-radius: 16px;
+    width: 220px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+.card p {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+form {
+    margin: 20px auto;
+    text-align: center;
+}
+
+input, select, button {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin: 5px;
+}
+
+button {
+    background: #667eea;
+    color: white;
+    cursor: pointer;
+}
+
+.modern-table {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: collapse;
+    background: rgba(255,255,255,0.12);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.modern-table th, .modern-table td {
+    padding: 15px;
+}
+
+.modern-table th {
+    background: rgba(0,0,0,0.35);
+    cursor: pointer;
+}
+
+.modern-table tr:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}

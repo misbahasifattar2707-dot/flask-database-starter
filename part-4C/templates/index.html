@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Management</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>📚 Library Management System</h1>
+
+<!-- DASHBOARD -->
+<div class="dashboard">
+    <div class="card">
+        <h3>Total Books</h3>
+        <p id="totalBooks">0</p>
+    </div>
+    <div class="card">
+        <h3>Total Authors</h3>
+        <p id="totalAuthors">0</p>
+    </div>
+</div>
+
+<!-- ADD AUTHOR -->
+<form method="POST" action="/add-author">
+    <input type="text" name="name" placeholder="Author name" required>
+    <button>Add Author</button>
+</form>
+
+<!-- ADD BOOK -->
+<form method="POST" action="/add-book">
+    <input type="text" name="title" placeholder="Book title" required>
+    <input type="number" name="year" placeholder="Year">
+    <select name="author_id">
+        {% for author in authors %}
+            <option value="{{ author.id }}">{{ author.name }}</option>
+        {% endfor %}
+    </select>
+    <button>Add Book</button>
+</form>
+
+<!-- BOOKS TABLE (JS POWERED) -->
+<table class="modern-table">
+    <thead>
+        <tr>
+            <th onclick="sortBy('id')">ID</th>
+            <th onclick="sortBy('title')">Title</th>
+            <th>Author</th>
+            <th onclick="sortBy('year')">Year</th>
+        </tr>
+    </thead>
+    <tbody id="booksBody"></tbody>
+</table>
+
+<div class="pagination">
+    <button onclick="prevPage()">Prev</button>
+    <span id="pageInfo"></span>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
