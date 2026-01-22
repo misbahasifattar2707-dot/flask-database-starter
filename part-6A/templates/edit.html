@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Product</title>
+<style>
+body{background:linear-gradient(135deg,#667eea,#764ba2);display:flex;justify-content:center;align-items:center;height:100vh;font-family:'Segoe UI'}
+.card{background:#fff;padding:30px;border-radius:14px;width:400px;box-shadow:0 15px 40px rgba(0,0,0,.25)}
+input,button{width:100%;padding:12px;margin-top:10px}
+button{background:#ffa502;color:#fff;border:none;border-radius:8px;font-weight:600}
+a{text-decoration:none;color:#667eea;display:block;margin-top:15px;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="card">
+<h2>Edit Product</h2>
+<form method="POST">
+<input name="name" value="{{ product.name }}" required>
+<input name="quantity" type="number" value="{{ product.quantity }}" required>
+<input name="price" type="number" step="0.01" value="{{ product.price }}" required>
+<button>Update Product</button>
+</form>
+<a href="/">← Back</a>
+</div>
+
+</body>
+</html>

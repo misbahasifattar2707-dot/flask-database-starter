@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Inventory</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI'}
+        body{background:linear-gradient(135deg,#667eea,#764ba2);padding:40px}
+        .container{max-width:1000px;margin:auto;background:#fff;padding:30px;border-radius:14px;box-shadow:0 15px 40px rgba(0,0,0,.2)}
+        h1{text-align:center;margin-bottom:25px}
+        .add-btn{background:#667eea;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:600}
+        table{width:100%;margin-top:20px;border-collapse:collapse}
+        th{background:#667eea;color:#fff;padding:14px;text-align:left}
+        td{padding:14px;border-bottom:1px solid #eee}
+        tr:hover{background:#f6f7ff}
+        .edit{background:#ffa502;color:#fff;padding:6px 12px;border-radius:6px;text-decoration:none;margin-right:5px}
+        .delete{background:#ff4757;color:#fff;padding:6px 12px;border-radius:6px;text-decoration:none}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📦 Product Inventory</h1>
+    <a href="/add" class="add-btn">➕ Add Product</a>
+
+    <table>
+        <tr>
+            <th>ID</th><th>Name</th><th>Quantity</th><th>Price</th><th>Actions</th>
+        </tr>
+        {% for p in products %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.quantity }}</td>
+            <td>₹{{ p.price }}</td>
+            <td>
+                <a href="/edit/{{ p.id }}" class="edit">Edit</a>
+                <a href="/delete/{{ p.id }}" class="delete"
+                   onclick="return confirm('Delete this product?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>
